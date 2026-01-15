@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class TodoController extends Controller
 {
@@ -46,19 +47,25 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorize('create', Todo::class);
-
         $request->validate([
             'title' => 'required|string|max:150',
             'due_date' => 'nullable|date',
+            'image' => 'nullable|image|max:2048', // 画像バリデーション
         ]);
-    
+
+        $imageUrl = null;
+        if ($request->hasFile('image')) {
+            // Cloudinaryへ直接アップロードしURLを取得
+            $imageUrl = $request->file('image')->storeOnCloudinary('todos')->getSecurePath();
+        }
+
         Todo::create([
             'title'   => $request->title,
             'user_id' => Auth::id(),
             'due_date' => $request->due_date,
+            'image_path' => $imageUrl, // DBにURLを保存
         ]);
-    
+
         return redirect()->route('todos.index');
     }
 
