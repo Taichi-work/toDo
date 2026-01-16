@@ -1,59 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel ToDo App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel + Breeze + Tailwind CSS を用いて作成した、  
+**ユーザー認証付きの ToDo 管理アプリケーション**です。
 
-## About Laravel
+タスクの作成・編集・削除に加え、  
+**期限管理・完了状態の切り替え・認可（Policy）**を実装しています。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 プロジェクト概要
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### プロジェクト名
+Laravel ToDo App
 
-## Learning Laravel
+### 概要
+ログインしたユーザーごとにタスク（ToDo）を管理できる Web アプリケーションです。  
+未完了・完了済みのタスクを分けて表示し、期限が近いタスクを優先的に確認できます。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 想定ユーザー
+- 個人でタスク管理をしたいユーザー
+- Laravel 学習者・ポートフォリオ閲覧者
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 解決する課題
+- タスクの「期限」「完了状態」を一目で把握できない
+- 他ユーザーのデータが操作できてしまうセキュリティリスク
 
-## Laravel Sponsors
+→ **認証・認可（Policy）を用いて安全に解決**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠 技術スタック
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 言語
+- PHP 8.x
+- JavaScript
 
-## Contributing
+### フレームワーク
+- Laravel 12
+- Laravel Breeze（Blade）
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### ライブラリ / ツール
+- Tailwind CSS
+- Vite
+- Alpine.js（Breeze 依存）
 
-## Code of Conduct
+### その他
+- Docker / Laravel Sail
+- MySQL
+- Git / GitHub
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## ✨ 主な機能
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- ユーザー登録 / ログイン（Laravel Breeze）
+- タスクの CRUD（作成・編集・削除）
+- タスクの完了 / 未完了切り替え
+- 期限（日付）設定機能
+- 期限切れタスクの視覚的強調表示
+- 作成日の表示
+- Policy による認可制御（自分のタスクのみ操作可能）
+- Tailwind CSS によるレスポンシブ UI
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🔮 今後の改善予定
+タスクの並び替え（期限順・作成日順）
+
+優先度（High / Medium / Low）の追加
+
+カレンダービュー表示
+
+フロントエンドのアニメーション強化
+
+テストコード（Feature / Policy Test）の追加
+
+---
+
+## 🧑‍💻 使い方
+ユーザー登録またはログイン
+
+「タスクを追加」から新規 ToDo を作成
+
+チェックボックスで完了 / 未完了を切り替え
+
+編集・削除は自分のタスクのみ可能
+
+期限切れタスクは色で判別可能
+
+---
+
+## 🚀 セットアップ方法
+
+### 1. リポジトリをクローン
+```bash
+git clone https://github.com/yourname/laravel-todo-app.git
+cd laravel-todo-app
+2. 環境変数の設定
+bash
+コードをコピーする
+cp .env.example .env
+3. コンテナ起動（Laravel Sail）
+bash
+コードをコピーする
+./vendor/bin/sail up -d
+4. 依存関係のインストール
+bash
+コードをコピーする
+./vendor/bin/sail composer install
+./vendor/bin/sail npm install
+5. アプリケーションキー生成
+bash
+コードをコピーする
+./vendor/bin/sail artisan key:generate
+6. マイグレーション実行
+bash
+コードをコピーする
+./vendor/bin/sail artisan migrate
+7. フロントエンドビルド
+bash
+コードをコピーする
+./vendor/bin/sail npm run dev
+8. ブラウザでアクセス
+arduino
+コードをコピーする
+http://localhost
